@@ -1152,7 +1152,6 @@ begin
   //Have the correct button label to indicate root
   btnLeftRoot.Caption:=DirectorySeparator;
   btnRightRoot.Caption:=DirectorySeparator;
-
   for I := 0 to pnlKeys.ControlCount - 1 do
     FunctionButtonsCaptions[I].ACaption := pnlKeys.Controls[I].Caption;
 

@@ -977,24 +977,24 @@ object frmMain: TfrmMain
       Left = 168
       Height = 35
       Top = 0
-      Width = 136
+      Width = 137
       Action = actCopyToClipboard
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF4: TSpeedButton
-      Left = 304
+      Left = 305
       Height = 35
       Top = 0
-      Width = 124
-      Action = actEdit
+      Width = 120
+      Action = actCutToClipboard
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF5: TSpeedButton
-      Left = 428
+      Left = 425
       Height = 35
       Top = 0
       Width = 136
@@ -1004,17 +1004,17 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF6: TSpeedButton
-      Left = 564
+      Left = 561
       Height = 35
       Top = 0
-      Width = 141
+      Width = 143
       Action = actRename
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF7: TSpeedButton
-      Left = 705
+      Left = 704
       Height = 35
       Top = 0
       Width = 178
@@ -1025,7 +1025,7 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF8: TSpeedButton
-      Left = 883
+      Left = 882
       Height = 35
       Top = 0
       Width = 151
@@ -1037,10 +1037,10 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF9: TSpeedButton
-      Left = 1034
+      Left = 1033
       Height = 35
       Top = 0
-      Width = 174
+      Width = 175
       Action = actRunTerm
       Caption = 'Terminal'
       Flat = True
@@ -1516,7 +1516,7 @@ object frmMain: TfrmMain
   end
   object actionLst: TActionList
     Left = 560
-    Top = 42
+    Top = 40
     object actHorizontalFilePanels: TAction
       Tag = 16
       Category = 'Window'
