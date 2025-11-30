@@ -1,14 +1,19 @@
 object frmMain: TfrmMain
   Left = 485
-  Height = 370
+  Height = 648
   Top = 269
-  Width = 760
+  Width = 1330
   Caption = 'Double Commander'
-  ClientHeight = 370
-  ClientWidth = 760
-  Constraints.MaxHeight = 32767
-  Constraints.MaxWidth = 32767
+  ClientHeight = 648
+  ClientWidth = 1330
+  Constraints.MaxHeight = 57342
+  Constraints.MaxWidth = 57342
+  DesignTimePPI = 168
+  Font.Height = -21
   KeyPreview = True
+  SessionProperties = 'nbConsole.Height;seLogWindow.Height;TreePanel.Width'
+  ShowHint = True
+  ShowInTaskBar = stAlways
   OnClose = frmMainClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -20,18 +25,14 @@ object frmMain: TfrmMain
   OnShow = frmMainShow
   OnUTF8KeyPress = FormUTF8KeyPress
   OnWindowStateChange = FormWindowStateChange
-  SessionProperties = 'nbConsole.Height;seLogWindow.Height;TreePanel.Width'
-  ShowHint = True
-  ShowInTaskBar = stAlways
-  LCLVersion = '1.8.4.0'
   object MainToolbar: TKASToolBar
     AnchorSideTop.Control = Owner
     Left = 0
-    Height = 20
+    Height = 35
     Top = 0
-    Width = 760
+    Width = 1330
     AutoSize = True
-    Constraints.MinHeight = 20
+    Constraints.MinHeight = 35
     EdgeBorders = []
     Flat = True
     TabOrder = 1
@@ -49,61 +50,62 @@ object frmMain: TfrmMain
   end
   object TreePanel: TPanel
     Left = 0
-    Height = 191
-    Top = 20
-    Width = 121
+    Height = 343
+    Top = 35
+    Width = 212
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
     Visible = False
   end
   object TreeSplitter: TSplitter
-    Left = 121
-    Height = 191
-    Top = 20
-    Width = 5
+    Left = 212
+    Height = 343
+    Top = 35
+    Width = 9
   end
   object pnlMain: TPanel
-    Left = 126
-    Height = 191
-    Top = 20
-    Width = 634
+    Left = 221
+    Height = 343
+    Top = 35
+    Width = 1109
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 191
-    ClientWidth = 634
+    ClientHeight = 343
+    ClientWidth = 1109
     TabOrder = 5
     object pnlDisk: TKASToolPanel
       AnchorSideTop.Control = MainToolbar
       Left = 0
-      Height = 24
+      Height = 39
       Top = 0
-      Width = 634
+      Width = 1109
       Align = alTop
       AutoSize = True
       EdgeBorders = [ebTop, ebBottom]
       OnResize = pnlDiskResize
+      TabOrder = 0
       Visible = False
       object pnlDskLeft: TPanel
         AnchorSideLeft.Control = pnlDisk
         AnchorSideTop.Control = pnlDisk
         Left = 0
-        Height = 24
-        Top = 0
-        Width = 170
+        Height = 35
+        Top = 2
+        Width = 263
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 24
-        ClientWidth = 170
+        ClientHeight = 35
+        ClientWidth = 263
         TabOrder = 0
         Visible = False
         object dskLeft: TKASToolBar
           Left = 0
-          Height = 20
+          Height = 35
           Top = 0
-          Width = 170
+          Width = 263
           AutoSize = True
-          Constraints.MinHeight = 20
+          Constraints.MinHeight = 35
           EdgeBorders = []
           Flat = True
           ShowCaptions = True
@@ -120,24 +122,24 @@ object frmMain: TfrmMain
         AnchorSideTop.Control = pnlDisk
         AnchorSideRight.Control = pnlDisk
         AnchorSideRight.Side = asrBottom
-        Left = 46
-        Height = 24
-        Top = 0
-        Width = 588
-        AutoSize = True
+        Left = 846
+        Height = 35
+        Top = 2
+        Width = 263
         Anchors = [akTop, akRight]
+        AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 24
-        ClientWidth = 588
+        ClientHeight = 35
+        ClientWidth = 263
         TabOrder = 1
         Visible = False
         object dskRight: TKASToolBar
           Left = 0
-          Height = 20
+          Height = 35
           Top = 0
-          Width = 588
+          Width = 263
           AutoSize = True
-          Constraints.MinHeight = 20
+          Constraints.MinHeight = 35
           EdgeBorders = []
           Flat = True
           ShowCaptions = True
@@ -153,25 +155,25 @@ object frmMain: TfrmMain
     end
     object pnlNotebooks: TPanel
       Left = 0
-      Height = 167
-      Top = 24
-      Width = 634
+      Height = 304
+      Top = 39
+      Width = 1109
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 167
-      ClientWidth = 634
+      ClientHeight = 304
+      ClientWidth = 1109
       FullRepaint = False
       TabOrder = 1
       OnResize = pnlNotebooksResize
       object pnlLeft: TPanel
         Left = 0
-        Height = 167
+        Height = 304
         Top = 0
-        Width = 511
+        Width = 894
         Align = alLeft
         BevelOuter = bvNone
-        ClientHeight = 167
-        ClientWidth = 511
+        ClientHeight = 304
+        ClientWidth = 894
         TabOrder = 0
         OnDblClick = pnlLeftRightDblClick
         OnResize = pnlLeftResize
@@ -179,80 +181,81 @@ object frmMain: TfrmMain
           Left = 0
           Height = 10
           Top = 0
-          Width = 511
+          Width = 894
           Align = alTop
           AutoSize = True
           EdgeBorders = [ebTop, ebBottom]
+          TabOrder = 1
           Visible = False
         end
         object pnlLeftTools: TPanel
           Left = 0
-          Height = 24
+          Height = 42
           Top = 10
-          Width = 511
+          Width = 894
           Align = alTop
           AutoSize = True
           BevelOuter = bvNone
-          ClientHeight = 24
-          ClientWidth = 511
+          ClientHeight = 42
+          ClientWidth = 894
           TabOrder = 0
           Visible = False
           object btnLeftDrive: TSpeedButton
             Left = 0
-            Height = 24
+            Height = 42
             Top = 0
-            Width = 48
+            Width = 84
             Action = actLeftOpenDrives
             Align = alLeft
-            Constraints.MinHeight = 24
+            Constraints.MinHeight = 42
             OnMouseUp = btnDriveMouseUp
           end
           object btnLeftHome: TSpeedButton
-            Left = 465
-            Height = 24
+            Left = 814
+            Height = 42
             Hint = 'Go to home directory'
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '~'
             OnClick = btnLeftClick
           end
           object btnLeftUp: TSpeedButton
-            Left = 442
-            Height = 24
+            Left = 774
+            Height = 42
             Hint = 'Go to parent directory'
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '..'
             OnClick = btnLeftClick
           end
           object btnLeftRoot: TSpeedButton
-            Left = 419
-            Height = 24
+            Left = 734
+            Height = 42
             Hint = 'Go to root directory'
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '/'
             OnClick = btnLeftClick
           end
           object btnLeftDirectoryHotlist: TSpeedButton
-            Left = 396
-            Height = 24
+            Left = 694
+            Height = 42
             Hint = 'Directory Hotlist'
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '*'
             OnClick = btnLeftDirectoryHotlistClick
           end
           object btnLeftEqualRight: TSpeedButton
-            Left = 488
-            Height = 24
+            Left = 854
+            Height = 42
             Hint = 'Show current directory of the right panel in the left panel'
             Top = 0
-            Width = 23
+            Width = 40
             Action = actLeftEqualRight
             Align = alRight
             Caption = '<'
@@ -263,13 +266,13 @@ object frmMain: TfrmMain
             AnchorSideTop.Side = asrBottom
             AnchorSideRight.Control = lblLeftDriveInfo
             AnchorSideRight.Side = asrBottom
-            Left = 52
-            Height = 10
+            Left = 92
+            Height = 18
             Top = 1
-            Width = 342
+            Width = 597
             Anchors = [akTop, akLeft, akRight]
-            BorderSpacing.Left = 2
-            BorderSpacing.Right = 2
+            BorderSpacing.Left = 4
+            BorderSpacing.Right = 4
             OnPaint = sboxDrivePaint
           end
           object lblLeftDriveInfo: TLabel
@@ -277,14 +280,14 @@ object frmMain: TfrmMain
             AnchorSideLeft.Side = asrBottom
             AnchorSideTop.Control = pnlLeftTools
             AnchorSideRight.Side = asrBottom
-            Left = 50
+            Left = 88
             Height = 1
             Top = 0
-            Width = 346
+            Width = 605
             Alignment = taCenter
             Anchors = [akTop, akLeft, akRight]
-            BorderSpacing.Left = 2
-            BorderSpacing.Right = 2
+            BorderSpacing.Left = 4
+            BorderSpacing.Right = 4
             ParentColor = False
             OnDblClick = lblDriveInfoDblClick
             OnResize = lblDriveInfoResize
@@ -292,14 +295,14 @@ object frmMain: TfrmMain
         end
       end
       object MiddleToolbar: TKASToolBar
-        Left = 511
-        Height = 161
+        Left = 894
+        Height = 304
         Top = 0
-        Width = 20
+        Width = 35
         Align = alLeft
         AutoSize = True
-        Constraints.MinHeight = 20
-        Constraints.MinWidth = 20
+        Constraints.MinHeight = 35
+        Constraints.MinWidth = 35
         EdgeBorders = []
         Flat = True
         TabOrder = 3
@@ -317,14 +320,14 @@ object frmMain: TfrmMain
         GlyphSize = 16
       end
       object pnlRight: TPanel
-        Left = 511
-        Height = 167
+        Left = 929
+        Height = 304
         Top = 0
-        Width = 123
+        Width = 180
         Align = alClient
         BevelOuter = bvNone
-        ClientHeight = 167
-        ClientWidth = 123
+        ClientHeight = 304
+        ClientWidth = 180
         TabOrder = 1
         OnDblClick = pnlLeftRightDblClick
         OnResize = pnlRightResize
@@ -332,77 +335,78 @@ object frmMain: TfrmMain
           Left = 0
           Height = 10
           Top = 0
-          Width = 123
+          Width = 180
           Align = alTop
           AutoSize = True
           EdgeBorders = [ebTop, ebBottom]
+          TabOrder = 1
           Visible = False
         end
         object pnlRightTools: TPanel
           Left = 0
-          Height = 24
+          Height = 42
           Top = 10
-          Width = 123
+          Width = 180
           Align = alTop
           AutoSize = True
           BevelOuter = bvNone
-          ClientHeight = 24
-          ClientWidth = 123
+          ClientHeight = 42
+          ClientWidth = 180
           TabOrder = 0
           Visible = False
           object btnRightDrive: TSpeedButton
             Left = 0
-            Height = 24
+            Height = 42
             Top = 0
-            Width = 48
+            Width = 84
             Action = actRightOpenDrives
             Align = alLeft
-            Constraints.MinHeight = 24
+            Constraints.MinHeight = 42
             OnMouseUp = btnDriveMouseUp
           end
           object btnRightHome: TSpeedButton
-            Left = 77
-            Height = 24
+            Left = 100
+            Height = 42
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '~'
             OnClick = btnRightClick
           end
           object btnRightUp: TSpeedButton
-            Left = 54
-            Height = 24
+            Left = 60
+            Height = 42
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '..'
             OnClick = btnRightClick
           end
           object btnRightRoot: TSpeedButton
-            Left = 31
-            Height = 24
+            Left = 44
+            Height = 42
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '/'
             OnClick = btnRightClick
           end
           object btnRightDirectoryHotlist: TSpeedButton
-            Left = 25
-            Height = 24
+            Left = 44
+            Height = 42
             Hint = 'Directory Hotlist'
             Top = 0
-            Width = 23
+            Width = 40
             Align = alRight
             Caption = '*'
             OnClick = btnRightDirectoryHotlistClick
           end
           object btnRightEqualLeft: TSpeedButton
-            Left = 100
-            Height = 24
+            Left = 140
+            Height = 42
             Hint = 'Show current directory of the left panel in the right panel'
             Top = 0
-            Width = 23
+            Width = 40
             Action = actRightEqualLeft
             Align = alRight
             Caption = '>'
@@ -413,13 +417,13 @@ object frmMain: TfrmMain
             AnchorSideTop.Side = asrBottom
             AnchorSideRight.Control = lblRightDriveInfo
             AnchorSideRight.Side = asrBottom
-            Left = 52
-            Height = 10
+            Left = 92
+            Height = 18
             Top = 1
             Width = 0
             Anchors = [akTop, akLeft, akRight]
-            BorderSpacing.Left = 2
-            BorderSpacing.Right = 2
+            BorderSpacing.Left = 4
+            BorderSpacing.Right = 4
             OnPaint = sboxDrivePaint
           end
           object lblRightDriveInfo: TLabel
@@ -427,14 +431,14 @@ object frmMain: TfrmMain
             AnchorSideLeft.Side = asrBottom
             AnchorSideTop.Control = pnlRightTools
             AnchorSideRight.Side = asrBottom
-            Left = 50
+            Left = 88
             Height = 1
             Top = 0
             Width = 0
             Alignment = taCenter
             Anchors = [akTop, akLeft, akRight]
-            BorderSpacing.Left = 2
-            BorderSpacing.Right = 2
+            BorderSpacing.Left = 4
+            BorderSpacing.Right = 4
             ParentColor = False
             OnDblClick = lblDriveInfoDblClick
             OnResize = lblDriveInfoResize
@@ -443,10 +447,10 @@ object frmMain: TfrmMain
       end
       object MainSplitter: TPanel
         Cursor = crHSplit
-        Left = 429
-        Height = 78
-        Top = -40
-        Width = 5
+        Left = 753
+        Height = 136
+        Top = -17
+        Width = 9
         Anchors = []
         BevelOuter = bvNone
         PopupMenu = pmSplitterPercent
@@ -461,8 +465,8 @@ object frmMain: TfrmMain
   object PanelAllProgress: TPanel
     Left = 0
     Height = 0
-    Top = 211
-    Width = 760
+    Top = 378
+    Width = 1330
     Align = alBottom
     AutoSize = True
     BevelOuter = bvNone
@@ -472,50 +476,50 @@ object frmMain: TfrmMain
   object ConsoleSplitter: TSplitter
     Cursor = crVSplit
     Left = 0
-    Height = 3
-    Top = 211
-    Width = 760
+    Height = 5
+    Top = 378
+    Width = 1330
     Align = alBottom
     AutoSnap = False
-    OnCanResize = ConsoleSplitterCanResize
-    OnMoved = ConsoleSplitterMoved
     ResizeAnchor = akBottom
     ResizeStyle = rsLine
     Visible = False
+    OnCanResize = ConsoleSplitterCanResize
+    OnMoved = ConsoleSplitterMoved
   end
   object pnlCommand: TPanel
     AnchorSideBottom.Control = LogSplitter
     Left = 0
-    Height = 81
-    Top = 214
-    Width = 760
+    Height = 134
+    Top = 383
+    Width = 1330
     Align = alBottom
     AutoSize = True
     BevelOuter = bvNone
-    ClientHeight = 81
-    ClientWidth = 760
+    ClientHeight = 134
+    ClientWidth = 1330
     FullRepaint = False
     TabOrder = 8
     object pnlCmdLine: TPanel
       Left = 0
-      Height = 27
-      Top = 54
-      Width = 760
+      Height = 40
+      Top = 94
+      Width = 1330
       Align = alClient
       AutoSize = True
       BevelOuter = bvNone
       ChildSizing.TopBottomSpacing = 2
-      ClientHeight = 27
-      ClientWidth = 760
+      ClientHeight = 40
+      ClientWidth = 1330
       TabOrder = 1
       object lblCommandPath: TLabel
         AnchorSideTop.Control = edtCommand
         AnchorSideTop.Side = asrCenter
-        Left = 2
-        Height = 15
+        Left = 4
+        Height = 28
         Top = 6
-        Width = 24
-        BorderSpacing.Left = 2
+        Width = 46
+        BorderSpacing.Left = 4
         Caption = 'Path'
         ParentColor = False
         ShowAccelChar = False
@@ -526,25 +530,25 @@ object frmMain: TfrmMain
         AnchorSideTop.Control = pnlCmdLine
         AnchorSideRight.Control = pnlCmdLine
         AnchorSideRight.Side = asrBottom
-        Left = 28
-        Height = 23
+        Left = 54
+        Height = 36
         Top = 2
-        Width = 732
+        Width = 1272
         Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Left = 2
-        BorderSpacing.Right = 2
-        ItemHeight = 15
-        OnExit = edtCommandExit
-        OnKeyDown = edtCommandKeyDown
+        BorderSpacing.Left = 4
+        BorderSpacing.Right = 4
+        ItemHeight = 28
         TabOrder = 0
         TabStop = False
+        OnExit = edtCommandExit
+        OnKeyDown = edtCommandKeyDown
       end
     end
     object nbConsole: TPageControl
       Left = 0
-      Height = 54
+      Height = 94
       Top = 0
-      Width = 760
+      Width = 1330
       TabStop = False
       ActivePage = pgConsole
       Align = alTop
@@ -560,9 +564,9 @@ object frmMain: TfrmMain
     AnchorSideBottom.Control = seLogWindow
     Cursor = crVSplit
     Left = 0
-    Height = 4
-    Top = 295
-    Width = 760
+    Height = 7
+    Top = 517
+    Width = 1330
     Align = alBottom
     AutoSnap = False
     ResizeAnchor = akBottom
@@ -572,13 +576,13 @@ object frmMain: TfrmMain
   inline seLogWindow: TSynEdit
     AnchorSideBottom.Control = pnlKeys
     Left = 0
-    Height = 51
-    Top = 299
-    Width = 760
+    Height = 89
+    Top = 524
+    Width = 1330
     Align = alBottom
     Color = clWindow
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -28
     Font.Name = 'courier'
     Font.Pitch = fpFixed
     Font.Quality = fqNonAntialiased
@@ -944,9 +948,9 @@ object frmMain: TfrmMain
   end
   object pnlKeys: TPanel
     Left = 0
-    Height = 20
-    Top = 350
-    Width = 760
+    Height = 35
+    Top = 613
+    Width = 1330
     Align = alBottom
     BevelOuter = bvNone
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
@@ -954,56 +958,66 @@ object frmMain: TfrmMain
     ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
     ChildSizing.ShrinkVertical = crsHomogenousChildResize
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
-    ClientHeight = 20
-    ClientWidth = 760
+    ClientHeight = 35
+    ClientWidth = 1330
     FullRepaint = False
     TabOrder = 3
     Visible = False
-    object btnF3: TSpeedButton
+    object btnF11: TSpeedButton
       Left = 0
-      Height = 20
+      Height = 35
       Top = 0
-      Width = 89
-      Action = actView
+      Width = 168
+      Action = actRenameOnly
+      Flat = True
+      OnMouseWheelDown = btnF3MouseWheelDown
+      OnMouseWheelUp = btnF3MouseWheelUp
+    end
+    object btnF3: TSpeedButton
+      Left = 168
+      Height = 35
+      Top = 0
+      Width = 136
+      Action = actCopyToClipboard
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF4: TSpeedButton
-      Left = 89
-      Height = 20
+      Left = 304
+      Height = 35
       Top = 0
-      Width = 84
+      Width = 124
       Action = actEdit
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF5: TSpeedButton
-      Left = 173
-      Height = 20
+      Left = 428
+      Height = 35
       Top = 0
-      Width = 92
+      Width = 136
       Action = actCopy
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF6: TSpeedButton
-      Left = 265
-      Height = 20
+      Left = 564
+      Height = 35
       Top = 0
-      Width = 94
+      Width = 141
       Action = actRename
       Flat = True
       OnMouseWheelDown = btnF3MouseWheelDown
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF7: TSpeedButton
-      Left = 359
-      Height = 20
+      Left = 705
+      Height = 35
       Top = 0
-      Width = 112
+      Width = 178
       Action = actMakeDir
       Caption = 'Directory'
       Flat = True
@@ -1011,10 +1025,10 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF8: TSpeedButton
-      Left = 471
-      Height = 20
+      Left = 883
+      Height = 35
       Top = 0
-      Width = 97
+      Width = 151
       Caption = 'Delete'
       Flat = True
       OnClick = btnF8Click
@@ -1023,10 +1037,10 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF9: TSpeedButton
-      Left = 568
-      Height = 20
+      Left = 1034
+      Height = 35
       Top = 0
-      Width = 110
+      Width = 174
       Action = actRunTerm
       Caption = 'Terminal'
       Flat = True
@@ -1034,10 +1048,10 @@ object frmMain: TfrmMain
       OnMouseWheelUp = btnF3MouseWheelUp
     end
     object btnF10: TSpeedButton
-      Left = 678
-      Height = 20
+      Left = 1208
+      Height = 35
       Top = 0
-      Width = 82
+      Width = 122
       Action = actExit
       Caption = 'Exit'
       Flat = True
@@ -1047,8 +1061,8 @@ object frmMain: TfrmMain
   end
   object mnuMain: TMainMenu
     ParentBidiMode = False
-    left = 232
-    top = 8
+    Left = 406
+    Top = 14
     object mnuFiles: TMenuItem
       Caption = '&Files'
       object mnuFilesSymLink: TMenuItem
@@ -1360,12 +1374,15 @@ object frmMain: TfrmMain
       Caption = '&Show'
       object mnuBriefView: TMenuItem
         Action = actBriefView
+        AutoCheck = True
       end
       object mnuColumnsView: TMenuItem
         Action = actColumnsView
+        AutoCheck = True
       end
       object mnuThumbnailsView: TMenuItem
         Action = actThumbnailsView
+        AutoCheck = True
       end
       object miLine33: TMenuItem
         Caption = '-'
@@ -1498,8 +1515,8 @@ object frmMain: TfrmMain
     end
   end
   object actionLst: TActionList
-    left = 320
-    top = 24
+    Left = 560
+    Top = 42
     object actHorizontalFilePanels: TAction
       Tag = 16
       Category = 'Window'
@@ -2196,8 +2213,8 @@ object frmMain: TfrmMain
       Tag = 14
       Category = 'Navigation'
       Caption = 'Synchronous navigation'
-      Hint = 'Synchronous directory changing in both panels'
       GroupIndex = 7
+      Hint = 'Synchronous directory changing in both panels'
       OnExecute = actExecute
     end
     object actChangeDirToParent: TAction
@@ -2874,18 +2891,18 @@ object frmMain: TfrmMain
   end
   object pmHotList: TPopupMenu
     Images = imgLstDirectoryHotlist
-    left = 128
-    top = 88
+    Left = 224
+    Top = 154
   end
   object pmDirHistory: TPopupMenu
     AutoPopup = False
-    left = 184
-    top = 104
+    Left = 322
+    Top = 182
   end
   object pmToolBar: TPopupMenu
     OnPopup = pmToolBarPopup
-    left = 48
-    top = 152
+    Left = 84
+    Top = 266
     object tbEdit: TMenuItem
       Caption = 'Edit'
       OnClick = tbEditClick
@@ -2919,8 +2936,8 @@ object frmMain: TfrmMain
     end
   end
   object pmContextMenu: TPopupMenu
-    left = 40
-    top = 96
+    Left = 70
+    Top = 168
     object mnuContextOpen: TMenuItem
       Action = actOpen
     end
@@ -2947,15 +2964,15 @@ object frmMain: TfrmMain
     end
   end
   object pmColumnsMenu: TPopupMenu
-    left = 344
-    top = 144
+    Left = 602
+    Top = 252
     object MenuItem2: TMenuItem
       Caption = '-'
     end
   end
   object pmSplitterPercent: TPopupMenu
-    left = 312
-    top = 96
+    Left = 546
+    Top = 168
     object mi2080: TMenuItem
       Tag = 20
       Caption = '&20/80'
@@ -2993,8 +3010,8 @@ object frmMain: TfrmMain
     end
   end
   object pmDropMenu: TPopupMenu
-    left = 384
-    top = 72
+    Left = 672
+    Top = 126
     object miCopy: TMenuItem
       Caption = 'Copy...'
       OnClick = mnuDropClick
@@ -4028,12 +4045,12 @@ object frmMain: TfrmMain
     Hint = 'Double Commander - click to restore'
     OnClick = MainTrayIconClick
     OnDblClick = MainTrayIconClick
-    left = 220
-    top = 168
+    Left = 385
+    Top = 294
   end
   object pmTabMenu: TPopupMenu
-    left = 392
-    top = 128
+    Left = 686
+    Top = 224
     object miNewTab: TMenuItem
       Action = actNewTab
       OnClick = mnuTabMenuClick
@@ -4140,8 +4157,8 @@ object frmMain: TfrmMain
     end
   end
   object pmTrayIconMenu: TPopupMenu
-    left = 294
-    top = 193
+    Left = 515
+    Top = 338
     object miTrayIconRestore: TMenuItem
       Caption = 'Restore'
       OnClick = miTrayIconRestoreClick
@@ -4155,8 +4172,8 @@ object frmMain: TfrmMain
     end
   end
   object pmLogMenu: TPopupMenu
-    left = 440
-    top = 136
+    Left = 770
+    Top = 238
     object miLogCopy: TMenuItem
       Caption = 'Copy'
       OnClick = miLogMenuClick
@@ -4187,20 +4204,20 @@ object frmMain: TfrmMain
     Enabled = False
     Interval = 100
     OnTimer = AllProgressOnUpdateTimer
-    left = 704
-    top = 152
+    Left = 1232
+    Top = 266
   end
   object imgLstActions: TImageList
-    left = 64
-    top = 224
+    Left = 112
+    Top = 392
   end
   object imgLstDirectoryHotlist: TImageList
-    left = 200
-    top = 224
+    Left = 350
+    Top = 392
   end
   object pmFavoriteTabs: TPopupMenu
     Images = imgLstActions
-    left = 128
-    top = 152
+    Left = 224
+    Top = 266
   end
 end

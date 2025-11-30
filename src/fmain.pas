@@ -232,6 +232,7 @@ type
     actDebugShowCommandParameters: TAction;
     actOpenDriveByIndex: TAction;
     btnF10: TSpeedButton;
+    btnF11: TSpeedButton;
     btnF3: TSpeedButton;
     btnF4: TSpeedButton;
     btnF5: TSpeedButton;
@@ -990,11 +991,12 @@ var
 {$ENDIF}
 
 var
-  FunctionButtonsCaptions: array[0..7] of record
+  FunctionButtonsCaptions: array[0..8] of record
                              ACaption: String;
                              ACommand: String;
                            end =
-     ((ACaption: ''; ACommand: 'cm_View'),
+     ((ACaption: ''; ACommand: 'cm_RenameOnly'),
+      (ACaption: ''; ACommand: 'cm_View'),
       (ACaption: ''; ACommand: 'cm_Edit'),
       (ACaption: ''; ACommand: 'cm_Copy'),
       (ACaption: ''; ACommand: 'cm_Rename'),
