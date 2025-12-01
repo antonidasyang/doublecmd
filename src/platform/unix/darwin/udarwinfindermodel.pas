@@ -31,7 +31,8 @@ type
     function colorIndex: NSInteger; message 'tag_colorIndex';
     function isShowingInSidebar: Boolean; message 'tag_isShowingInSidebar';
     function isUserDefined: Boolean; message 'tag_isUserDefined';
-    function color: NSColor; message 'tag_color';
+    function editorColor: NSColor; message 'tag_editorColor';
+    function menuColor: NSColor; message 'tag_menuColor';
   end;
 
   { TFinderTags }
@@ -60,8 +61,8 @@ type
 
   uDarwinFinderModelUtil = class
   strict private class var
-    _rectFinderTagNSColors: TFinderTagNSColors;
-    _dotFinderTagNSColors: TFinderTagNSColors;
+    _editorFinderTagNSColors: TFinderTagNSColors;
+    _menuFinderTagNSColors: TFinderTagNSColors;
     _favoriteTags: NSArray;
   private
     class function getAllTags: NSDictionary;
@@ -88,8 +89,9 @@ type
     class procedure searchFilesForTagName( const tagName: NSString; const handler: TMacOSSearchResultHandler );
     class procedure searchFilesForTagNames( const tagNames: NSArray; const handler: TMacOSSearchResultHandler );
   public
-    class property rectFinderTagNSColors: TFinderTagNSColors read _rectFinderTagNSColors;
-    class property dotFinderTagNSColors: TFinderTagNSColors read _dotFinderTagNSColors;
+    class property editorFinderTagNSColors: TFinderTagNSColors read _editorFinderTagNSColors;
+    class property menuFinderTagNSColors: TFinderTagNSColors read _menuFinderTagNSColors;
+    class property decorationFinderTagNSColors: TFinderTagNSColors read _menuFinderTagNSColors;
     class property favoriteTags: NSArray read getFavoriteTags;
   end;
 
@@ -114,7 +116,7 @@ class function TFinderTag.tagWithParams( const name: NSString; const colorIndex:
 begin
   Result:= TFinderTag.new;
   Result._name:= name.retain;
-  if (colorIndex>=0) and (colorIndex<length(uDarwinFinderModelUtil.rectFinderTagNSColors)) then
+  if (colorIndex>=0) and (colorIndex<length(uDarwinFinderModelUtil.editorFinderTagNSColors)) then
     Result._colorIndex:= colorIndex;
   Result._isShowingInSidebar:= isShowingInSidebar;
   Result._isUserDefined:= isUserDefined;
@@ -147,9 +149,14 @@ begin
   Result:= _isUserDefined;
 end;
 
-function TFinderTag.color: NSColor;
+function TFinderTag.editorColor: NSColor;
 begin
-  Result:= uDarwinFinderModelUtil.rectFinderTagNSColors[ _colorIndex ];
+  Result:= uDarwinFinderModelUtil.editorFinderTagNSColors[ _colorIndex ];
+end;
+
+function TFinderTag.menuColor: NSColor;
+begin
+  Result:= uDarwinFinderModelUtil.menuFinderTagNSColors[ _colorIndex ];
 end;
 
 { TFinderTags }
@@ -649,7 +656,7 @@ end;
 
 class procedure uDarwinFinderModelUtil.initFinderTagNSColors;
 begin
-  _rectFinderTagNSColors:= [
+  _editorFinderTagNSColors:= [
     NSColor.colorWithCalibratedRed_green_blue_alpha( 0.656, 0.656, 0.656, 0.5 ).retain,
     NSColor.colorWithCalibratedRed_green_blue_alpha( 0.656, 0.656, 0.656, 1 ).retain,
     NSColor.colorWithCalibratedRed_green_blue_alpha( 0.699, 0.836, 0.266, 1 ).retain,
@@ -660,15 +667,15 @@ begin
     NSColor.colorWithCalibratedRed_green_blue_alpha( 0.961, 0.660, 0.254, 1 ).retain
   ];
 
-  _dotFinderTagNSColors:= [
-    NSColor.textColor,
-    NSColor.grayColor,
-    NSColor.greenColor,
-    NSColor.purpleColor,
-    NSColor.blueColor,
-    NSColor.yellowColor,
-    NSColor.redColor,
-    NSColor.orangeColor
+  _menuFinderTagNSColors:= [
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.400, 0.400, 0.400, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.612, 0.612, 0.627, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.451, 0.800, 0.427, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.663, 0.451, 0.804, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.306, 0.541, 0.937, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.941, 0.812, 0.337, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 1.000, 0.400, 0.349, 1 ).retain,
+    NSColor.colorWithCalibratedRed_green_blue_alpha( 0.922, 0.651, 0.302, 1 ).retain
   ];
 end;
 

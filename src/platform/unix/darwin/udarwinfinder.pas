@@ -250,9 +250,9 @@ var
 begin
   finderTag:= TFinderTags.getTagOfName( self.stringValue );
   if finderTag <> nil then
-    color:= finderTag.color
+    color:= finderTag.editorColor
   else
-    color:= uDarwinFinderModelUtil.rectFinderTagNSColors[0];
+    color:= uDarwinFinderModelUtil.editorFinderTagNSColors[0];
 
   drawingRect:= self.drawingRectForBounds( cellFrame );
   path:= NSBezierPath.bezierPathWithRoundedRect_xRadius_yRadius(
@@ -529,25 +529,27 @@ var
 
   procedure drawTagColor;
   var
+    color: NSColor;
     finderTag: TFinderTag;
     rect: NSRect;
     path: NSBezierPath;
   begin
+    finderTag:= TFinderTags.getTagOfName( tagName );
+    color:= uDarwinFinderModelUtil.menuFinderTagNSColors[finderTag.colorIndex];
     rect:= cellRect;
     rect.size.width:= rect.size.height;
     rect:= NSInsetRect( rect, 5, 5 );
     if NOT newStyle then
       rect.origin.x:= rect.origin.x + 10;
-    finderTag:= TFinderTags.getTagOfName( tagName );
-    uDarwinFinderModelUtil.dotFinderTagNSColors[finderTag.colorIndex].set_;
+    rect:= NSInsetRect( rect, 0.5, 0.5 );
+    color.set_;
+    path:= NSBezierPath.bezierPathWithOvalInRect( rect );
     if finderTag.colorIndex <> 0 then begin
-      path:= NSBezierPath.bezierPathWithOvalInRect( rect );
       path.fill;
-    end else begin
-      rect:= NSInsetRect( rect, 0.5, 0.5 );
-      path:= NSBezierPath.bezierPathWithOvalInRect( rect );
-      path.stroke;
+      color:= color.blendedColorWithFraction_ofColor( 0.1, NSColor.textColor );
+      color.set_;
     end;
+    path.stroke;
   end;
 
   procedure drawTagName;
@@ -982,8 +984,11 @@ var
     color.set_;
     rect.origin:= NSZeroPoint;
     rect.size:= imageSize;
+    rect:= NSInsetRect( rect, 1, 1 );
     path:= NSBezierPath.bezierPathWithOvalInRect( rect );
     path.fill;
+    color.blendedColorWithFraction_ofColor( 0.1, NSColor.textColor ).set_;
+    path.stroke;
   end;
 
   function createOneColorImage( const color: NSColor ): NSImage;
@@ -1011,7 +1016,7 @@ var
 
 begin
   imageSize:= NSMakeSize( FINDER_TAGS_MENU_ROUND_SIZE, FINDER_TAGS_MENU_ROUND_SIZE );
-  colors:= uDarwinFinderModelUtil.rectFinderTagNSColors;
+  colors:= uDarwinFinderModelUtil.menuFinderTagNSColors;
   count:= Length( colors );
   SetLength( _menuTagRoundImages, count );
   for i:= 0 to count-1 do begin
@@ -1071,6 +1076,7 @@ end;
 procedure TFinderFavoriteTagMenuItem.drawRect(dirtyRect: NSRect);
   procedure drawCircle;
   var
+    color: NSColor;
     rect: NSRect;
     path: NSBezierPath;
   begin
@@ -1078,13 +1084,22 @@ procedure TFinderFavoriteTagMenuItem.drawRect(dirtyRect: NSRect);
     if NOT _hover then
       rect:= NSInsetRect( rect, 2, 2 );
 
-    _finderTag.color.set_;
+    rect:= NSInsetRect( rect, 1, 1 );
     path:= NSBezierPath.bezierPathWithOvalInRect( rect );
-    path.fill;
+    color:= _finderTag.menuColor;
+    if _finderTag.colorIndex <> 0 then begin
+      color.set_;
+      path.fill;
+      color:= color.blendedColorWithFraction_ofColor( 0.1, NSColor.textColor );
+    end;
+
+    color.set_;
+    path.stroke;
   end;
 
   procedure drawState;
   var
+    color: NSColor;
     stateString: NSString;
     stateRect: NSRect;
     stateFontSize: CGFloat;
@@ -1111,9 +1126,13 @@ procedure TFinderFavoriteTagMenuItem.drawRect(dirtyRect: NSRect);
     if stateString = nil then
       Exit;
 
+    if _finderTag.colorIndex <> 0 then
+      color:= NSColor.whiteColor
+    else
+      color:= _finderTag.menuColor;
     attributes:= NSMutableDictionary.new;
     attributes.setValue_forKey( NSFont.systemFontOfSize(stateFontSize), NSFontAttributeName );
-    attributes.setValue_forKey( NSColor.whiteColor, NSForegroundColorAttributeName );
+    attributes.setValue_forKey( color, NSForegroundColorAttributeName );
 
     stateString.drawWithRect_options_attributes( stateRect, 0, attributes );
 
